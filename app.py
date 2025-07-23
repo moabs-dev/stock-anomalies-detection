@@ -10,7 +10,7 @@ import pandas as pd
 st.sidebar.title("📈 Stock Anomaly Detector")
 ticker = st.sidebar.selectbox("Choose a stock", ['AAPL', 'GOOG', 'TSLA'])
 
-# Download data
+# Download data by yfinance library just like we can from sklearn
 data = yf.download(ticker, start="2018-01-01", end="2024-12-31")['Close']
 data = data.reset_index()
 data.fillna(method='ffill', inplace=True)
