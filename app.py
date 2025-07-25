@@ -27,7 +27,7 @@ df['BB_Low'] = bb.bollinger_lband()
 
 # Anomaly detection
 df_clean = df[['y', 'SMA', 'EMA', 'RSI', 'BB_High', 'BB_Low']].dropna()
-clf = IsolationForest(contamination=0.01, random_state=42)
+clf = IsolationForest(contamination=0.01, random_state=42)#Model for detection
 df.loc[df_clean.index, 'anomaly_if'] = clf.fit_predict(df_clean)
 df['anomaly_if'] = df['anomaly_if'].apply(lambda x: 1 if x == -1 else 0)
 
